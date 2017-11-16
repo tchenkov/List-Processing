@@ -3,6 +3,8 @@ SoftUni >Module: TeamWork - September 2017 > List Processing – Teamwork Projec
 
 Contributors: Тодор Ченков - joto_to, Цветелина Йорданова - cvet_yordanova, Христо Спиртов - morgoth
 
+https://trello.com/b/IYxe9Usy/list-processing-teamwork-project-assignment
+
 # Commands Description
 Design and implement a console-based application for list processing. It should enter a list of strings from the console and continuously execute commands (like add / remove / replace, invert) over the list. 
 
