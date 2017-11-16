@@ -23,13 +23,15 @@ public class Engine {
     }
 
     public void run() {
+        String listOfItems = this.inputReader.readLine();
+        this.outputWriter.writeLine(listOfItems);
         String inputLine;
 
         while (true) {
             inputLine = this.inputReader.readLine();
             List<String> commandParams = this.inputParser.parseInput(inputLine);
 
-            String result = this.dispatchCommand(commandParams);
+            String result = this.dispatchCommand(commandParams, listOfItems);
             if (result != null) {
                 this.outputWriter.writeLine(result);
             }
@@ -39,12 +41,12 @@ public class Engine {
         }
     }
 
-    private String dispatchCommand(List<String> commandParams) {
+    private String dispatchCommand(List<String> commandParams, String listOfItems) {
         String command = commandParams.remove(0);
 
         switch (command) {
             case "append":
-
+                return this.commandManager.append(listOfItems, commandParams.get(0));
             default:
                 return null;
         }
