@@ -5,6 +5,7 @@ import io.ConsoleInputReader;
 import io.ConsoleOutputWriter;
 import utilities.InputParser;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static utilities.Constants.INPUT_TERMINATING_COMMAND;
@@ -23,8 +24,8 @@ public class Engine {
     }
 
     public void run() {
-        String listOfItems = this.inputReader.readLine();
-        this.outputWriter.writeLine(listOfItems);
+        List<String> listOfItems = Arrays.asList(this.inputReader.readLine().split("\\s+"));
+        this.outputWriter.writeLine(String.join(" ",listOfItems));
         String inputLine;
 
         while (true) {
@@ -41,12 +42,14 @@ public class Engine {
         }
     }
 
-    private String dispatchCommand(List<String> commandParams, String listOfItems) {
+    private String dispatchCommand(List<String> commandParams, List<String> listOfItems) {
         String command = commandParams.remove(0);
 
         switch (command) {
             case "append":
                 return this.commandManager.append(listOfItems, commandParams.get(0));
+            case "prepend":
+                return this.commandManager.prepend(listOfItems, commandParams.get(0));
             default:
                 return null;
         }
