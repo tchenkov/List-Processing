@@ -50,6 +50,12 @@ public class Engine {
                 return this.commandManager.append(listOfItems, commandParams.get(0));
             case "prepend":
                 return this.commandManager.prepend(listOfItems, commandParams.get(0));
+            case "roll":
+                if (commandParams.get(0).equals("left")) {
+                    return this.commandManager.rollLeft(listOfItems);
+                } else {
+                    return this.commandManager.rollRight(listOfItems);
+                }
             default:
                 return null;
         }
