@@ -5,6 +5,13 @@ Contributors: Тодор Ченков - joto_to, Цветелина Йордан
 
 https://trello.com/b/IYxe9Usy/list-processing-teamwork-project-assignment
 
+	Hristo Spirtov tasks:
+--------------------------------------------------------
+- Implement roll left functionality
+- Implement roll right functionality
+
+------
+
 # Commands Description
 Design and implement a console-based application for list processing. It should enter a list of strings from the console and continuously execute commands (like add / remove / replace, invert) over the list. 
 
