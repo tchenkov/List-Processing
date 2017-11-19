@@ -8,12 +8,12 @@ import java.util.List;
 import static utilities.Constants.*;
 
 public class CommandManager {
-    public String append(List<String> inputListItems, String toAppendString){
+    public <T> String append(List<T> inputListItems, T toAppendString){
         inputListItems.add(toAppendString);
         return listToString(inputListItems);
     }
 
-    public String prepend(List<String> inputListItems, String toPrependString){
+    public <T> String prepend(List<T> inputListItems, T toPrependString){
         inputListItems.add(0, toPrependString);
         return listToString(inputListItems);
     }
