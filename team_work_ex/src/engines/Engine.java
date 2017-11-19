@@ -8,7 +8,7 @@ import utilities.InputParser;
 import java.util.Arrays;
 import java.util.List;
 
-import static utilities.Constants.INPUT_TERMINATING_COMMAND;
+import static utilities.Constants.*;
 
 public class Engine {
     private ConsoleInputReader inputReader;
@@ -58,8 +58,22 @@ public class Engine {
                 }
             case "reverse":
                 return this.commandManager.reverse(listOfItems);
+            case "insert":
+                if (commandParams.size() != 2){
+                    return ERROR_INVALID_COMMAND_PARAMETERS;
+                }
+                
+                int index;
+                try {
+                    index = Integer.parseInt(commandParams.get(0));
+                } catch (NumberFormatException nfe) {
+                    return ERROR_INVALID_COMMAND_PARAMETERS;
+                }
+    
+                String element = commandParams.get(1);
+                return this.commandManager.insert(listOfItems, index, element);
             default:
-                return null;
+                return ERROR_INVALID_COMMAND;
         }
     }
 }

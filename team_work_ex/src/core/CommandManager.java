@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+
+import static utilities.Constants.*;
+
 public class CommandManager {
     public String append(List<String> inputListItems, String toAppendString){
         return String.join(" ",inputListItems) + " " + toAppendString;
@@ -49,6 +52,15 @@ public class CommandManager {
         return listToString(list);
     }
     
+    public <T> String insert(List<T> list, int index, T element){
+        try {
+            list.add(index, element);
+        } catch (IndexOutOfBoundsException iobe){
+            return String.format(ERROR_INVALID_INDEX , index);
+        }
+        
+        return listToString(list);
+    }
     
     private <T> String listToString(List<T> list){
         return (Arrays.toString(list.toArray())).replaceAll("[\\[\\],]", "");
