@@ -1,5 +1,7 @@
 package core;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class CommandManager {
@@ -40,5 +42,15 @@ public class CommandManager {
         // set last element at position 0
         inputListItems.set(0, lastElement);
         return String.join(" ", inputListItems);
+    }
+    
+    public <T> String reverse(List<T> list){
+        Collections.reverse(list);
+        return listToString(list);
+    }
+    
+    
+    private <T> String listToString(List<T> list){
+        return (Arrays.toString(list.toArray())).replaceAll("[\\[\\],]", "");
     }
 }

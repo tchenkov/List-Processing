@@ -56,6 +56,8 @@ public class Engine {
                 } else {
                     return this.commandManager.rollRight(listOfItems);
                 }
+            case "reverse":
+                return this.commandManager.reverse(listOfItems);
             default:
                 return null;
         }
