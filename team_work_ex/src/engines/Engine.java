@@ -5,6 +5,7 @@ import io.ConsoleInputReader;
 import io.ConsoleOutputWriter;
 import utilities.InputParser;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class Engine {
     }
 
     public void run() {
-        List<String> listOfItems = Arrays.asList(this.inputReader.readLine().split("\\s+"));
+        List<String> listOfItems = new ArrayList<>(Arrays.asList(this.inputReader.readLine().split("\\s+")));
         this.outputWriter.writeLine(String.join(" ",listOfItems));
         String inputLine;
 
