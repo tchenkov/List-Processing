@@ -9,11 +9,13 @@ import static utilities.Constants.*;
 
 public class CommandManager {
     public String append(List<String> inputListItems, String toAppendString){
-        return String.join(" ",inputListItems) + " " + toAppendString;
+        inputListItems.add(toAppendString);
+        return listToString(inputListItems);
     }
 
     public String prepend(List<String> inputListItems, String toPrependString){
-        return toPrependString + " " +String.join(" ",inputListItems);
+        inputListItems.add(0, toPrependString);
+        return listToString(inputListItems);
     }
 
     public String rollLeft(List<String> inputListItems) {
