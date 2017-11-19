@@ -31,14 +31,16 @@ public class Engine {
 
         while (true) {
             inputLine = this.inputReader.readLine();
+            
+            if (inputLine.equals(INPUT_TERMINATING_COMMAND)) {
+                break;
+            }
+            
             List<String> commandParams = this.inputParser.parseInput(inputLine);
-
+    
             String result = this.dispatchCommand(commandParams, listOfItems);
             if (result != null) {
                 this.outputWriter.writeLine(result);
-            }
-            if (inputLine.equals(INPUT_TERMINATING_COMMAND)) {
-                break;
             }
         }
     }
