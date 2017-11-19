@@ -47,49 +47,50 @@ public class Engine {
 
     private String dispatchCommand(List<String> commandParams, List<String> listOfItems) {
         String command = commandParams.remove(0);
+            switch (command) {
+                case "append":
+                    return this.commandManager.append(listOfItems, commandParams.get(0));
+                case "prepend":
+                    return this.commandManager.prepend(listOfItems, commandParams.get(0));
+                case "roll":
+                    if (commandParams.get(0).equals("left")) {
+                        return this.commandManager.rollLeft(listOfItems);
+                    } else {
+                        return this.commandManager.rollRight(listOfItems);
+                    }
+                case "reverse":
+                    return this.commandManager.reverse(listOfItems);
+                case "insert":
+                    if (commandParams.size() != 2) {
+                        return ERROR_INVALID_COMMAND_PARAMETERS;
+                    }
 
-        switch (command) {
-            case "append":
-                return this.commandManager.append(listOfItems, commandParams.get(0));
-            case "prepend":
-                return this.commandManager.prepend(listOfItems, commandParams.get(0));
-            case "roll":
-                if (commandParams.get(0).equals("left")) {
-                    return this.commandManager.rollLeft(listOfItems);
-                } else {
-                    return this.commandManager.rollRight(listOfItems);
-                }
-            case "reverse":
-                return this.commandManager.reverse(listOfItems);
-            case "insert":
-                if (commandParams.size() != 2){
-                    return ERROR_INVALID_COMMAND_PARAMETERS;
-                }
-                
-                int index;
-                try {
-                    index = Integer.parseInt(commandParams.get(0));
-                } catch (NumberFormatException nfe) {
-                    return ERROR_INVALID_COMMAND_PARAMETERS;
-                }
-    
-                String element = commandParams.get(1);
-                return this.commandManager.insert(listOfItems, index, element);
-            case "delete":
-                if (commandParams.size() != 1){
-                    return ERROR_INVALID_COMMAND_PARAMETERS;
-                }
-    
-                int deleteElementAt;
-                try {
-                    deleteElementAt = Integer.parseInt(commandParams.get(0));
-                } catch (NumberFormatException nfe) {
-                    return ERROR_INVALID_COMMAND_PARAMETERS;
-                }
-                
-                return this.commandManager.delete(listOfItems, deleteElementAt);
-            default:
-                return ERROR_INVALID_COMMAND;
-        }
+                    int index;
+                    try {
+                        index = Integer.parseInt(commandParams.get(0));
+                    } catch (NumberFormatException nfe) {
+                        return ERROR_INVALID_COMMAND_PARAMETERS;
+                    }
+
+                    String element = commandParams.get(1);
+                    return this.commandManager.insert(listOfItems, index, element);
+                case "delete":
+                    if (commandParams.size() != 1) {
+                        return ERROR_INVALID_COMMAND_PARAMETERS;
+                    }
+
+                    int deleteElementAt;
+                    try {
+                        deleteElementAt = Integer.parseInt(commandParams.get(0));
+                    } catch (NumberFormatException nfe) {
+                        return ERROR_INVALID_COMMAND_PARAMETERS;
+                    }
+
+                    return this.commandManager.delete(listOfItems, deleteElementAt);
+                case "count":
+                    return this.commandManager.count(listOfItems, commandParams.get(0));
+                default:
+                    return ERROR_INVALID_COMMAND;
+            }
     }
 }

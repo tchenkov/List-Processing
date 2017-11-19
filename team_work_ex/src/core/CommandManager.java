@@ -18,6 +18,18 @@ public class CommandManager {
         return listToString(inputListItems);
     }
 
+    public <T> String count(List<T> inputListItems, T findString){
+        Integer count = 0;
+
+        for (T inputListItem : inputListItems) {
+            if(inputListItem.equals(findString)){
+                count++;
+            }
+        }
+
+        return String.valueOf(count);
+    }
+
     public String rollLeft(List<String> inputListItems) {
         // save element from first position
         String firstElement = inputListItems.get(0);
