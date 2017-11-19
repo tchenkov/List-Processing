@@ -33,6 +33,7 @@ public class Engine {
             inputLine = this.inputReader.readLine();
             
             if (inputLine.equals(INPUT_TERMINATING_COMMAND)) {
+                System.out.println(FINAL_OUTPUT);
                 break;
             }
             
