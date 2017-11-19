@@ -75,6 +75,19 @@ public class Engine {
     
                 String element = commandParams.get(1);
                 return this.commandManager.insert(listOfItems, index, element);
+            case "delete":
+                if (commandParams.size() != 1){
+                    return ERROR_INVALID_COMMAND_PARAMETERS;
+                }
+    
+                int deleteElementAt;
+                try {
+                    deleteElementAt = Integer.parseInt(commandParams.get(0));
+                } catch (NumberFormatException nfe) {
+                    return ERROR_INVALID_COMMAND_PARAMETERS;
+                }
+                
+                return this.commandManager.delete(listOfItems, deleteElementAt);
             default:
                 return ERROR_INVALID_COMMAND;
         }

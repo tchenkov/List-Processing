@@ -62,6 +62,16 @@ public class CommandManager {
         return listToString(list);
     }
     
+    public <T> String delete(List<T> list, int index){
+        try {
+            list.remove(index);
+        } catch (IndexOutOfBoundsException iobe){
+            return String.format(ERROR_INVALID_INDEX , index);
+        }
+    
+        return listToString(list);
+    }
+    
     private <T> String listToString(List<T> list){
         return (Arrays.toString(list.toArray())).replaceAll("[\\[\\],]", "");
     }
