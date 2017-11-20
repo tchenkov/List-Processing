@@ -35,7 +35,9 @@ Each command produces one of the following outputs:
     * In case of invalid command name print “Error: invalid command”. Command names are case-sensitive.
     * In case of invalid number of parameters or incorrect format of the parameters print “Error: invalid command parameters”.
 	
-	Hristo Spirtov tasks:
+	
+	
+Hristo Spirtov tasks:
 --------------------------------------------------------
 - Implement roll left functionality
 - Implement roll right functionality
