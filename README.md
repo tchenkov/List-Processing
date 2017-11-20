@@ -5,14 +5,6 @@ Contributors: Тодор Ченков - joto_to, Цветелина Йордан
 
 https://trello.com/b/IYxe9Usy/list-processing-teamwork-project-assignment
 
-	Hristo Spirtov tasks:
---------------------------------------------------------
-- Implement roll left functionality
-- Implement roll right functionality
-- Implement sort functionality
-
-
-------
 
 # Commands Description
 Design and implement a console-based application for list processing. It should enter a list of strings from the console and continuously execute commands (like add / remove / replace, invert) over the list. 
@@ -42,3 +34,11 @@ Each command produces one of the following outputs:
 * In case of error (e.g. invalid index or command parameter) the commands prints “Error: <error message>”.
     * In case of invalid command name print “Error: invalid command”. Command names are case-sensitive.
     * In case of invalid number of parameters or incorrect format of the parameters print “Error: invalid command parameters”.
+	
+	Hristo Spirtov tasks:
+--------------------------------------------------------
+- Implement roll left functionality
+- Implement roll right functionality
+- Implement sort functionality
+
+------
