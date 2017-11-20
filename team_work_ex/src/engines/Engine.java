@@ -54,11 +54,15 @@ public class Engine {
                 case "prepend":
                     return this.commandManager.prepend(listOfItems, commandParams.get(0));
                 case "roll":
-                    if (commandParams.get(0).equals("left")) {
-                        return this.commandManager.rollLeft(listOfItems);
-                    } else {
-                        return this.commandManager.rollRight(listOfItems);
+                    if (commandParams.size() == 1) {
+                        if (commandParams.get(0).equals("left")) {
+                            return this.commandManager.rollLeft(listOfItems);
+                        }
+                        if  (commandParams.get(0).equals("right")) {
+                            return this.commandManager.rollRight(listOfItems);
+                        }
                     }
+                    return ERROR_INVALID_COMMAND_PARAMETERS;
                 case "reverse":
                     return this.commandManager.reverse(listOfItems);
                 case "insert":
@@ -90,6 +94,8 @@ public class Engine {
                     return this.commandManager.delete(listOfItems, deleteElementAt);
                 case "count":
                     return this.commandManager.count(listOfItems, commandParams.get(0));
+                case "sort" :
+                    return this.commandManager.sort(listOfItems);
                 default:
                     return ERROR_INVALID_COMMAND;
             }

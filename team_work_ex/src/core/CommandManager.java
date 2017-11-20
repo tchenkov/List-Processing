@@ -3,6 +3,7 @@ package core;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 import static utilities.Constants.*;
@@ -30,35 +31,34 @@ public class CommandManager {
         return String.valueOf(count);
     }
 
-    public String rollLeft(List<String> inputListItems) {
+    public <T> String rollLeft(List<T> list) {
         // save element from first position
-        String firstElement = inputListItems.get(0);
+        T firstElement = list.get(0);
         // roll elements to the left
-        for (int i = 0; i < inputListItems.size() - 1; i++) {
+        for (int i = 0; i < list.size() - 1; i++) {
             // get value from the right position
-            String nextValue = inputListItems.get(i + 1);
+            T nextValue = list.get(i + 1);
             // set value from the right position at current position
-            inputListItems.set(i, nextValue);
+            list.set(i, nextValue);
         }
         // set first element at position size - 1;
-        inputListItems.set(inputListItems.size() - 1, firstElement);
-        return String.join(" ", inputListItems);
+        list.set(list.size() - 1, firstElement);
+        return listToString(list);
     }
 
-
-    public String rollRight(List<String> inputListItems) {
+    public <T> String rollRight(List<T> list) {
         // save element from last position
-        String lastElement = inputListItems.get(inputListItems.size() - 1);
+        T lastElement = list.get(list.size() - 1);
         // roll elements to the right
-        for (int i = inputListItems.size() - 1; i > 0; i--) {
+        for (int i = list.size() - 1; i > 0; i--) {
             // get value from the left position
-            String prevValue = inputListItems.get(i - 1);
+            T prevValue = list.get(i - 1);
             // set value from the left position at current position
-            inputListItems.set(i, prevValue);
+            list.set(i, prevValue);
         }
         // set last element at position 0
-        inputListItems.set(0, lastElement);
-        return String.join(" ", inputListItems);
+        list.set(0, lastElement);
+        return listToString(list);
     }
     
     public <T> String reverse(List<T> list){
@@ -85,8 +85,17 @@ public class CommandManager {
     
         return listToString(list);
     }
-    
+
+    public <T> String sort(List<T> list) {
+        return listToString(sortListAlphabetically(list));
+    }
+
+    private <T> List<T> sortListAlphabetically(List<T> list) {
+        return list.stream().sorted().collect(Collectors.toList());
+    }
+
     private <T> String listToString(List<T> list){
         return (Arrays.toString(list.toArray())).replaceAll("[\\[\\],]", "");
     }
+
 }
