@@ -86,12 +86,13 @@ public class CommandManager {
         return listToString(list);
     }
 
-    public <T> String sort(List<T> list) {
+    public <T extends Comparable> String sort(List<T> list) {
         return listToString(sortListAlphabetically(list));
     }
 
-    private <T> List<T> sortListAlphabetically(List<T> list) {
-        return list.stream().sorted().collect(Collectors.toList());
+    private <T extends Comparable> List<T> sortListAlphabetically(List<T> list) {
+        Collections.sort(list);
+        return list;
     }
 
     private <T> String listToString(List<T> list){
